@@ -1,5 +1,7 @@
 "use client";
 
+import Navbar from "./components/Navbar";
+
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
@@ -27,6 +29,8 @@ export default function Home() {
 
   return (
     <div className="bg-black text-white overflow-x-hidden">
+
+      <Navbar />
 
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center text-center overflow-hidden">

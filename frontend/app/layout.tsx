@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: "Library Management System",
@@ -19,13 +20,15 @@ export default function RootLayout({
 
       <body className="bg-black text-white">
 
-        <Navbar />
+        {/* Toast Message */}
+        <Toaster position="top-right" />
 
         {children}
 
         <Footer />
 
       </body>
+
     </html>
   );
 }

@@ -1,8 +1,4 @@
-"use client";
-
-import { FaBookOpen } from "react-icons/fa";
-
-export default function Navbar() {
+export default function AuthNavbar() {
   return (
     <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-xl bg-black/30 border-b border-white/10">
 
@@ -11,21 +7,19 @@ export default function Navbar() {
         {/* Left Side */}
         <div className="flex items-center gap-4">
 
-          {/* Logo Image */}
           <img
             src="/library-logo.png"
             alt="Library Logo"
             className="w-12 h-12 rounded-full object-cover bg-white"
           />
 
-          {/* Logo Text */}
           <h1 className="text-3xl font-bold tracking-wide text-white">
             Library
           </h1>
 
         </div>
 
-        {/* Right Side Menu */}
+        {/* Right Side */}
         <div className="flex gap-8 text-lg text-white">
 
           <a
@@ -42,31 +36,10 @@ export default function Navbar() {
             About
           </a>
 
-          <a
-            href="/#features"
-            className="hover:text-blue-400 transition"
-          >
-            Features
-          </a>
-
-          {/* Added Login */}
-          <a
-            href="/login"
-            className="hover:text-blue-400 transition"
-          >
-            Login
-          </a>
-
-          <a
-            href="/#contact"
-            className="hover:text-blue-400 transition"
-          >
-            Contact
-          </a>
-
         </div>
 
       </div>
+
     </nav>
   );
 }
