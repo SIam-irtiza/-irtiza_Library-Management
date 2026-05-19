@@ -1,9 +1,26 @@
 import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { JwtModule } from '@nestjs/jwt';
+
 import { BorrowsController } from './borrows.controller';
 import { BorrowsService } from './borrows.service';
 
+import { Borrow } from './borrow.entity';
+import { Book } from '../books/book.entity';
+
 @Module({
+  imports: [
+    TypeOrmModule.forFeature([
+      Borrow,
+      Book,
+    ]),
+
+    JwtModule.register({
+      secret: 'mysecretkey',
+    }),
+  ],
+
   controllers: [BorrowsController],
-  providers: [BorrowsService]
+  providers: [BorrowsService],
 })
 export class BorrowsModule {}
