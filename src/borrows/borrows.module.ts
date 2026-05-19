@@ -7,12 +7,14 @@ import { BorrowsService } from './borrows.service';
 
 import { Borrow } from './borrow.entity';
 import { Book } from '../books/book.entity';
+import { User } from '../users/user.entity';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([
       Borrow,
       Book,
+      User,
     ]),
 
     JwtModule.register({

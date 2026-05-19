@@ -17,4 +17,9 @@ export class Borrow {
 
   @Column()
   borrowDate!: string;
+
+  @Column({
+    default: 1,
+  })
+  quantity!: number;
 }
