@@ -103,6 +103,7 @@ export class BorrowsService {
       });
 
       result.push({
+        borrowId: borrow.id,
         memberId: borrow.userId,
         memberName: user?.fullName,
         bookId: borrow.bookId,
@@ -113,5 +114,33 @@ export class BorrowsService {
     }
 
     return result;
+  }
+
+  async returnBook(id: number) {
+    const borrow = await this.borrowRepository.findOne({
+      where: { id },
+    });
+
+    if (!borrow) {
+      return {
+        message: 'Borrow record not found',
+      };
+    }
+
+    const book = await this.bookRepository.findOne({
+      where: { id: borrow.bookId },
+    });
+
+    if (book) {
+      book.quantity += borrow.quantity;
+
+      await this.bookRepository.save(book);
+    }
+
+    await this.borrowRepository.delete(id);
+
+    return {
+      message: 'Book returned successfully',
+    };
   }
 }

@@ -2,7 +2,9 @@ import {
   Body,
   Controller,
   Post,
-  Get,
+ Get,
+  Delete,
+  Param,
   Req,
   UseGuards,
 } from '@nestjs/common';
@@ -44,5 +46,13 @@ export class BorrowsController {
   @Get()
   findAllBorrows() {
     return this.borrowsService.findAllBorrows();
+  }
+
+  @UseGuards(JwtAuthGuard, new RolesGuard('admin'))
+  @Delete(':id')
+  returnBook(@Param('id') id: string) {
+    return this.borrowsService.returnBook(
+      Number(id),
+    );
   }
 }
